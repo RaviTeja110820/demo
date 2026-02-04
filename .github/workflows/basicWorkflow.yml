@@ -1,0 +1,26 @@
+# Workflow name shown in GitHub Actions UI
+name: workflow1-runs linux commands
+
+# Trigger section
+on:
+  workflow_dispatch:   # Manual trigger from GitHub UI
+
+# Jobs section (map of jobs)
+jobs:
+
+  # First job
+  job1:
+    runs-on: ubuntu-latest   # GitHub provides Ubuntu runner
+    steps:                   # Steps is a LIST → use '-'
+      - name: Execute a linux command
+        run: echo "Hello All"   # 'run' expects a single string
+
+  # Second job
+  job2:
+    needs: job1             # This job waits until job1 completes
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Execute set of linux commands
+        run: |              # '|' allows multiple commands as one string
+          hostname -s
+          echo "Thanks you All"
