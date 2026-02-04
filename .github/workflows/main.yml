@@ -17,7 +17,7 @@ jobs:
 
   # Second job
   job2:
-    needs: job1             # This job waits until job1 completes
+    # needs: job1             # This job waits until job1 completes
     runs-on: ubuntu-24.04
     steps:
       - name: Execute set of linux commands
